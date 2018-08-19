@@ -1,0 +1,35 @@
+.user-bar {
+    background-color: #ffffff;
+    padding:22px 42px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.user-info{
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+.user-name, .user-points{
+    font-size: 24px;
+    color:#616161;
+    letter-spacing:-0.15px;
+    line-height:48px;
+    text-align:left;
+}
+.user-name p {
+    padding: 0 15px;
+}
+.user-points p {
+    padding: 0 8px 0 15px;
+}
+.user-points {
+    display: flex;
+    background:#ededed;
+    border-radius:100px;
+    padding-right:8px;
+}
+
+.Header .main-img img {
+    width: 100%;
+}

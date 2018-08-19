@@ -1,0 +1,17 @@
+.products-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 42px 132px;
+}
+.product {
+    width: 276px;
+    height: 276px;
+    padding:12px;
+    margin:12px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.10);
+    /*WEBKIT///////////////////////////////////*/
+}
+
+
