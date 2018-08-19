@@ -16,6 +16,18 @@ class Catalog extends Component {
             .catch(err => console.log(err))
     }
 
+    sortLowest(e) {
+        e.preventDefault(e);
+        this.setState(state => ({ list: state.list.sort((a,b) => a.cost - b.cost) }))
+        console.log('FROM LOWEST: ',this.state.list)
+    }
+
+    sortHighest(e) {
+        e.preventDefault(e);
+        this.setState(state => ({ list: state.list.sort((a,b) => b.cost - a.cost) }))
+        console.log('FROM HIGHEST: ',this.state.list)
+    }
+
     render() {
         let item = this.state.list.map((product,index) => 
             <div key={index} className="product">
@@ -32,6 +44,14 @@ class Catalog extends Component {
         )
         return (
             <div className="Catalog">
+
+                <div className="Filters">
+                    <p>Sort by:</p>
+                    <button>Most recent</button>
+                    <button onClick={ e => this.sortLowest(e) }>Lowest price</button>
+                    <button onClick={ e => this.sortHighest(e) }>Highest price</button>
+                </div>
+
                 <section className="products-container">
                     {item}
                 </section>
