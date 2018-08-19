@@ -4,6 +4,11 @@ import './catalog.css';
 
 class Catalog extends Component {
 
+    constructor(props) {
+        super()
+        this.state = { user: null }
+    }
+
     // sortLowest(e) {
     //     e.preventDefault(e);
     //     this.setState(state => ({ list: state.list.sort((a,b) => a.cost - b.cost) }))
@@ -17,19 +22,21 @@ class Catalog extends Component {
     // }
 
     render() {
-        // let item = this.state.list.map((product,index) => 
-        //     <div key={index} className="product">
-        //         <div className="product-pics-div">
-        //             <figure className="product-pic">
-        //                 <img src={product.img.url} alt={product.name}/>
-        //             </figure>
-        //         </div>
-        //         <div className="product-info">
-        //             <p className="product-category">{product.category}</p>
-        //             <p className="product-name">{product.name}</p>
-        //         </div>
-        //     </div>
-        // )
+        
+        let item = this.props.info[1].map((product,index) => 
+            <div key={index} className="product">
+                <div className="product-pics-div">
+                    <figure className="product-pic">
+                        <img src={product.img.url} alt={product.name}/>
+                    </figure>
+                </div>
+                <div className="product-info">
+                    <p className="product-category">{product.category}</p>
+                    <p className="product-name">{product.name}</p>
+                </div>
+            </div>
+
+        )
         return (
             <div className="Catalog">
 
@@ -43,7 +50,9 @@ class Catalog extends Component {
                     </div>
 
                 <section className="products-container">
-                    {/* {item} */}
+                    {this.props.info ? (
+                        item
+                    ): null}
                 </section>
             </div>
         )

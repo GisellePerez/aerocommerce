@@ -20,12 +20,13 @@ self.info = function(req,res,next) {
   ]).then(([userInfo, productsInfo]) => {
         console.log('USER: ',userInfo.data)
         console.log('PRODUCTS: ', productsInfo.data)
-        res.json({
-            totalInfo: {
-                userInfo: userInfo.data,
-                productsInfo: productsInfo.data,
-            }
-        })     
+        res.json(
+            totalInfo = [
+                userInfo.data,
+                productsInfo.data,
+            ]
+            
+        )     
     })
     .catch(err => console.log('THIS IS ERROR: ', err))
 }
