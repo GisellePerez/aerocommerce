@@ -9,7 +9,6 @@ class Catalog extends Component {
 
     constructor (props) {
         super(props);
-        //this.state = { list:[] };
     }
 
     sortLowest = () => {
@@ -24,11 +23,18 @@ class Catalog extends Component {
         this.props.sortNewestfromParent(this.props.list);
     }
 
-    render() {
-        
+    redeemProd = (product,arr) => {
+        arr = [];
+        arr.push(product);
+        console.log(arr);
+        this.props.handleRedeemFromParent(this.props.user.redeemHistory.push(product));
+    }
+
+    render() {        
         let item = this.props.list.map((product,index) => 
             <div key={index} className="product" ref={index}>
                 <div className="product-pics-div">
+                    <p>{index}</p>
                     <figure className="product-pic">
                         <img src={product.img.url} alt={product.name}/>
                     </figure>
@@ -40,7 +46,7 @@ class Catalog extends Component {
                 {this.props.user.points > product.cost ?
                     <div className="affordable">
                         <p>{product.cost}</p>
-                        <button> Redeem Now </button>
+                        <button onClick={this.redeemProd.bind(this,product)}> Redeem Now </button>
                     </div>
                 :
                     <div className="not-affordable">

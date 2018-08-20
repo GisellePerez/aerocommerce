@@ -11,8 +11,11 @@ class App extends Component {
       super(props)
       this.state = { 
         list: [],
-        user: []
+        user: [],
+        redeemed: []
       }
+      // },
+      // this.Myref = React.createRef();
     }
 
     handleSortLowest = (products) => {
@@ -33,9 +36,12 @@ class App extends Component {
       console.log(sorted);
     }
 
-    handleRedeemProduct(prod) {
-      let redeemed = this.prod.refs;
-      console.log(redeemed)
+    handleRedeemProduct(node,array) {
+      // array=[]
+      // array.push(node);
+      // console.log(node,array)
+      //this.setState({ redeemed: redeemedProds })
+      //console.log('redeemed: ',redeemed)
     }
 
     componentDidMount() {
@@ -52,7 +58,14 @@ class App extends Component {
           <Header user={this.state.user} list={this.state.list} />
         </header>
         <section>
-          <Catalog user={this.state.user} list={this.state.list} sortLowestfromParent={this.handleSortLowest} sortHighestfromParent={this.handleSortHighest} sortNewestfromParent={this.handleSortNewest}/>
+          <Catalog 
+            user={this.state.user} 
+            list={this.state.list} 
+            sortLowestfromParent={this.handleSortLowest} 
+            sortHighestfromParent={this.handleSortHighest} 
+            sortNewestfromParent={this.handleSortNewest}
+            handleRedeemFromParent={this.handleRedeemProduct}
+            redeemed={this.state.redeemed}/>
         </section> 
       </div>
     );
