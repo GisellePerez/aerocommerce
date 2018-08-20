@@ -11,8 +11,7 @@ class App extends Component {
       super(props)
       this.state = { 
         list: [],
-        user: [],
-        //redeemed: []
+        user: []
       }
     }
       
@@ -41,8 +40,7 @@ class App extends Component {
 
     }
 
-    getMorePoints = function(req,res,next) {
-     
+    getMorePoints() {     
       fetch('https://aerolab-challenge.now.sh/user/points', {
           method: 'POST',
           headers: {
@@ -53,11 +51,16 @@ class App extends Component {
           body: JSON.stringify({ 'amount': 1000 })
         })
         .then(response => response.json())
-        .then(dat => console.log(dat)/*this.setState({ dat : this.state.user.points*/ ) 
+        //.then(dat => this.setState({ points : this.state.user.points }) )
         // .then(data => { 
         //   var user = {...this.state.user}
-        //     user.points = data;
-        //   this.setState({ points: data })})
+        //     user.points = data['New Points'];
+        //   this.setState({ points: data['New Points'] })})
+        .then(datos => {
+          let user = {...this.state.user};    
+            user.points = datos['New Points'];                       
+            this.setState({user})
+        })
     }
 
     componentDidMount() {
