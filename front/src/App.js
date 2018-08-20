@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/header/header';
-import Filters from './components/filters/filters';
 import Catalog from './components/catalog/catalog';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
@@ -14,7 +13,7 @@ class App extends Component {
         user: []
       }
     }
-      
+
     handleSortLowest = (products) => {
       let sorted = products.sort((a,b) => a.cost - b.cost);
       this.setState({ list:sorted })
@@ -35,11 +34,9 @@ class App extends Component {
 
     handleRedeemProduct(prod) {
       let redeemHistory = {...this.state.user.redeemHistory};    
-      redeemHistory = prod;                       
+      redeemHistory = prod;        
+      console.log(this.state.user.redeemHistory)               
       this.setState({redeemHistory})
-      //this.setState( { user.redeemHistory: array })
-      //console.log('redeemed: ',redeemed)
-
     }
 
     getMorePoints() {     
@@ -83,7 +80,7 @@ class App extends Component {
             sortLowestfromParent={this.handleSortLowest} 
             sortHighestfromParent={this.handleSortHighest} 
             sortNewestfromParent={this.handleSortNewest}
-            handleRedeemFromParent={this.handleRedeemProduct}
+            handleRedeemFromParent={this.handleRedeemProduct.bind(this)}
            />
         </section> 
       </div>

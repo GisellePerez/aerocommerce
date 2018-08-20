@@ -10,6 +10,19 @@ class Catalog extends Component {
 
     constructor (props) {
         super(props);
+        this.page = 1;
+    }
+
+    setPageOne = (page) => {
+        this.page = 1;
+        // this.props.list = this.props.list.slice(0,16);
+        // console.log(page)
+    }
+
+    setPageTwo = (page) => {
+        this.page = 2;
+        // this.props.list = this.props.list.slice(17,33);
+        // console.log(page)
     }
 
     sortLowest = () => {
@@ -23,7 +36,7 @@ class Catalog extends Component {
     sortNewest = () => {
         this.props.sortNewestfromParent(this.props.list);
     }
-    
+   
     handleSubmit = (id) =>  {
         fetch('https://aerolab-challenge.now.sh/redeem', {
         method: 'POST',
@@ -38,16 +51,33 @@ class Catalog extends Component {
         .then((r) => { /*alert('Product successfully purchased')*/
             console.log(r)
             console.log(this.props.user.redeemHistory)
+
             this.props.handleRedeemFromParent(this.user.redeemHistory);
         })
         .catch(error => { console.log('request failed', error) })
     }
 
-    render() {        
-        let item = this.props.list.map((product,index) => 
+    render() {      
+        
+        // let itemsPerPage;        
+        // // let itemsPerPage = page != 2 ?  this.props.list.slice(0,16) : this.props.list.slice(17,33)
+        // // console.log(itemsPerPage)
+        // // if(page != 2) { itemsPerPage = this.props.list.slice(0,16); 
+        
+        // itemsPerPage = this.props.list.slice(0,16); 
+        // let page2 = this.props.list.slice(17,33)
+        //page.push(itemsPerPage);
+        // 
+        let item;
+        if(this.page != 2 ) {
+            item = this.props.list.slice(0,16)
+ 
+        }else {
+            item = this.props.slice(16)
+        }
+        item.map((product,index) => 
             <div key={index} className="product" ref={index}>
                 <div className="product-pics-div">
-                    <p>{index}</p>
                     <figure className="product-pic">
                         <img src={product.img.url} alt={product.name}/>
                     </figure>
@@ -70,10 +100,17 @@ class Catalog extends Component {
         )
         return (
             <div className="Catalog">
-                 <section>
-                    <button onClick={e => this.sortNewest(e)}>Latest</button>
-                    <button onClick={e => this.sortLowest(e)}>Lowest Price</button>
-                    <button onClick={e => this.sortHighest(e)}>Highest Price</button>
+                
+                <section>
+                    <div>
+                        <button onClick={e => this.setPageOne(this.page)}>Prev</button>
+                        <button onClick={e => this.setPageTwo(this.page)}>Next</button>
+                    </div>
+                    <div>
+                        <button onClick={e => this.sortNewest(e)}>Latest</button>
+                        <button onClick={e => this.sortLowest(e)}>Lowest Price</button>
+                        <button onClick={e => this.sortHighest(e)}>Highest Price</button>
+                    </div>
                 </section> 
                 <section className="products-container">
                     {item}
