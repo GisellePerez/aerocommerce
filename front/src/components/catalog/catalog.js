@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import './../../App.css';
 import './catalog.css';
+import coin from '../../imgs/icons/coin.svg'
+
+
 
 class Catalog extends Component {
 
-    constructor(props) {
-        super()
-        this.state = { user: null }
+    constructor (props) {
+        super(props);
+        //this.state = { list:[] };
     }
 
-    // sortLowest(e) {
-    //     e.preventDefault(e);
-    //     this.setState(state => ({ list: state.list.sort((a,b) => a.cost - b.cost) }))
-    //     console.log('FROM LOWEST: ',this.state.list)
-    // }
+    sortLowest = () => {
+        this.props.sortLowestfromParent(this.props.list);
+    }
 
-    // sortHighest(e) {
-    //     e.preventDefault(e);
-    //     this.setState(state => ({ list: state.list.sort((a,b) => b.cost - a.cost) }))
-    //     console.log('FROM HIGHEST: ',this.state.list)
-    // }
+    sortHighest = () => {
+        this.props.sortHighestfromParent(this.props.list);
+    }
+
+    sortNewest = () => {
+        this.props.sortNewestfromParent(this.props.list);
+    }
 
     render() {
         
-        let item = this.props.info[1].map((product,index) => 
-            <div key={index} className="product">
+        let item = this.props.list.map((product,index) => 
+            <div key={index} className="product" ref={index}>
                 <div className="product-pics-div">
                     <figure className="product-pic">
                         <img src={product.img.url} alt={product.name}/>
@@ -34,26 +37,28 @@ class Catalog extends Component {
                     <p className="product-category">{product.category}</p>
                     <p className="product-name">{product.name}</p>
                 </div>
+                {this.props.user.points > product.cost ?
+                    <div className="affordable">
+                        <p>{product.cost}</p>
+                        <button> Redeem Now </button>
+                    </div>
+                :
+                    <div className="not-affordable">
+                        <p>{ `You need  ${ product.cost - this.props.user.points }` } <span><img src={coin} alt='Coin icon'/></span></p>
+                    </div>
+                }
             </div>
-
         )
         return (
             <div className="Catalog">
-
-                <div className="Filters">
-                    {/* {
-                    <p>Sort by:</p>
-                    <button>Most recent</button>
-                    <button onClick={ e => this.sortLowest(e) }>Lowest price</button>
-                    <button onClick={ e => this.sortHighest(e) }>Highest price</button>
-                    } */}
-                    </div>
-
+                 <section>
+                    <button onClick={e => this.sortNewest(e)}>Latest</button>
+                    <button onClick={e => this.sortLowest(e)}>Lowest Price</button>
+                    <button onClick={e => this.sortHighest(e)}>Highest Price</button>
+                </section> 
                 <section className="products-container">
-                    {this.props.info ? (
-                        item
-                    ): null}
-                </section>
+                    {item}
+                </section> 
             </div>
         )
     }

@@ -21,5 +21,4 @@ self.getProducts =  function(req, res, next) {
       .catch(err => console.log('THIS IS ERROR: ', err))
 
 }
-
 module.exports = self;      
