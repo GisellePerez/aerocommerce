@@ -24,16 +24,16 @@ class Catalog extends Component {
         this.props.sortNewestfromParent(this.props.list);
     }
     
-    handleSubmit = () =>  {
+    handleSubmit = (id) =>  {
 
-        fetch('/redeem', {
+        fetch('https://aerolab-challenge.now.sh/redeem', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Yjc3NGEwMWFkMGE5MzAwNWI3YzRjNDEiLCJpYXQiOjE1MzQ1NDQzODV9.Vp5XnQ37oxa-vXuORjSbFqEsQVwu7Mpk_31ONoxX8pA'
         },
-        body: JSON.stringify({'productId': this.props.list.id})
+        body: JSON.stringify({'productId': id})
         })
         .then((res)=>res.json())
         .then((r)=> { alert('Product successfully purchased') })
@@ -70,7 +70,7 @@ class Catalog extends Component {
                     <div className="affordable">
                         <p>{product.cost}</p>
                         {/* <button onClick={this.redeemProd.bind(this,product)}> Redeem Now </button> */}
-                        <button onClick={this.handleSubmit}>Redeem Now</button>
+                        <button onClick={() => this.handleSubmit(product._id)}>Redeem Now</button>
                     </div>
                 :
                     <div className="not-affordable">

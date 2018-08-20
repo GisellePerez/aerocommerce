@@ -38,19 +38,26 @@ class App extends Component {
       //let history = array;
       //this.setState( { user.redeemHistory: array })
       //console.log('redeemed: ',redeemed)
+
     }
 
     getMorePoints = function(req,res,next) {
-      console.log('hola')
-      // fetch('https://aerolab-challenge.now.sh/user/points', {
-      //     method: 'POST',
-      //     headers: {
-      //         'Content-Type': 'application/json',
-      //         'Accept': 'application/json',
-      //         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Yjc3NGEwMWFkMGE5MzAwNWI3YzRjNDEiLCJpYXQiOjE1MzQ1NDQzODV9.Vp5XnQ37oxa-vXuORjSbFqEsQVwu7Mpk_31ONoxX8pA' 
-      //     },
-      //     body: JSON.stringify({ 'amount': 1000 })
-      //   })
+     
+      fetch('https://aerolab-challenge.now.sh/user/points', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Yjc3NGEwMWFkMGE5MzAwNWI3YzRjNDEiLCJpYXQiOjE1MzQ1NDQzODV9.Vp5XnQ37oxa-vXuORjSbFqEsQVwu7Mpk_31ONoxX8pA' 
+          },
+          body: JSON.stringify({ 'amount': 1000 })
+        })
+        .then(response => response.json())
+        .then(dat => console.log(dat)/*this.setState({ dat : this.state.user.points*/ ) 
+        // .then(data => { 
+        //   var user = {...this.state.user}
+        //     user.points = data;
+        //   this.setState({ points: data })})
     }
 
     componentDidMount() {

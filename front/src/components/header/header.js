@@ -17,7 +17,7 @@ class Header extends Component {
 
                 <div className="user-bar">
                     <div className="user-info">
-                        <button onClick={e=> { window.location.reload(); this.props.getMorePoints}}>Add points</button>
+                        <button onClick={this.props.getMorePoints}>Add points</button>
                         <div className="user-name">
                             <p>{this.props.user.name}</p>
                         </div>
