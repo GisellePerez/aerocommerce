@@ -9,22 +9,15 @@ class Header extends Component {
 
     constructor (props) {
         super(props);
-        //this.state = { user:[] };
     }
-
-    // componentDidMount() {
-    //     fetch('/user')
-    //         .then(re => re.json())
-    //         .then(info => {this.setState({ user:info }); console.log('THIS IS INFO: ',info)})
-    //         .catch(err => console.log(err))
-    // }
 
     render() {                       
          return (
              <div className="Header">
-             
+
                 <div className="user-bar">
                     <div className="user-info">
+                        <button onClick={e=> { window.location.reload(); this.props.getMorePoints}}>Add points</button>
                         <div className="user-name">
                             <p>{this.props.user.name}</p>
                         </div>

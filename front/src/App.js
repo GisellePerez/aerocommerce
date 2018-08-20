@@ -12,12 +12,10 @@ class App extends Component {
       this.state = { 
         list: [],
         user: [],
-        redeemed: []
+        //redeemed: []
       }
-      // },
-      // this.Myref = React.createRef();
     }
-
+      
     handleSortLowest = (products) => {
       let sorted = products.sort((a,b) => a.cost - b.cost);
       this.setState({ list:sorted })
@@ -36,12 +34,23 @@ class App extends Component {
       console.log(sorted);
     }
 
-    handleRedeemProduct(node,array) {
-      // array=[]
-      // array.push(node);
-      // console.log(node,array)
-      //this.setState({ redeemed: redeemedProds })
+    handleRedeemProduct(array) {
+      //let history = array;
+      //this.setState( { user.redeemHistory: array })
       //console.log('redeemed: ',redeemed)
+    }
+
+    getMorePoints = function(req,res,next) {
+      console.log('hola')
+      // fetch('https://aerolab-challenge.now.sh/user/points', {
+      //     method: 'POST',
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //         'Accept': 'application/json',
+      //         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Yjc3NGEwMWFkMGE5MzAwNWI3YzRjNDEiLCJpYXQiOjE1MzQ1NDQzODV9.Vp5XnQ37oxa-vXuORjSbFqEsQVwu7Mpk_31ONoxX8pA' 
+      //     },
+      //     body: JSON.stringify({ 'amount': 1000 })
+      //   })
     }
 
     componentDidMount() {
@@ -55,7 +64,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Header user={this.state.user} list={this.state.list} />
+          <Header 
+            user={this.state.user} 
+            list={this.state.list}
+            getMorePoints={this.getMorePoints} />
         </header>
         <section>
           <Catalog 
@@ -65,7 +77,7 @@ class App extends Component {
             sortHighestfromParent={this.handleSortHighest} 
             sortNewestfromParent={this.handleSortNewest}
             handleRedeemFromParent={this.handleRedeemProduct}
-            redeemed={this.state.redeemed}/>
+           />
         </section> 
       </div>
     );
