@@ -14,10 +14,9 @@ class Header extends Component {
     render() {                       
          return (
              <div className="Header">
-
                 <div className="user-bar">
                     <div className="user-info">
-                        <button onClick={this.props.getMorePoints.bind(this)}>Add points</button>
+                        <button onClick={this.props.getMorePoints}>Add points</button>
                         <div className="user-name">
                             <p>{this.props.user.name}</p>
                         </div>
@@ -33,7 +32,6 @@ class Header extends Component {
                 <figure className="main-img">
                     <img src={headerx1} alt="Headphones"></img>
                 </figure>
-             
             </div>
         )
     }

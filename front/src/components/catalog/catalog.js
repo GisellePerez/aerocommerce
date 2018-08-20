@@ -25,7 +25,6 @@ class Catalog extends Component {
     }
     
     handleSubmit = (id) =>  {
-
         fetch('https://aerolab-challenge.now.sh/redeem', {
         method: 'POST',
         headers: {
@@ -35,23 +34,14 @@ class Catalog extends Component {
         },
         body: JSON.stringify({'productId': id})
         })
-        .then((res)=>res.json())
-        .then((r)=> { alert('Product successfully purchased') })
+        .then((res) => res.json())
+        .then((r) => { /*alert('Product successfully purchased')*/
+            console.log(r)
+            console.log(this.props.user.redeemHistory)
+            this.props.handleRedeemFromParent(this.user.redeemHistory);
+        })
         .catch(error => { console.log('request failed', error) })
-
-      }
-
-    /* THIS WORKS FINE ON CLIENT
-    redeemProd = (product,arr) => {
-        
-        
-        arr = [];
-        arr.push(product);
-        this.props.handleRedeemFromParent(this.props.user.redeemHistory.push(product));
-        console.log(this.props.user.redeemHistory);
-        return this.props.user.redeemHistory;
     }
-    */
 
     render() {        
         let item = this.props.list.map((product,index) => 
@@ -69,7 +59,6 @@ class Catalog extends Component {
                 {this.props.user.points > product.cost ?
                     <div className="affordable">
                         <p>{product.cost}</p>
-                        {/* <button onClick={this.redeemProd.bind(this,product)}> Redeem Now </button> */}
                         <button onClick={() => this.handleSubmit(product._id)}>Redeem Now</button>
                     </div>
                 :

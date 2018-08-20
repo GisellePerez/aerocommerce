@@ -33,8 +33,10 @@ class App extends Component {
       console.log(sorted);
     }
 
-    handleRedeemProduct(array) {
-      //let history = array;
+    handleRedeemProduct(prod) {
+      let redeemHistory = {...this.state.user.redeemHistory};    
+      redeemHistory = prod;                       
+      this.setState({redeemHistory})
       //this.setState( { user.redeemHistory: array })
       //console.log('redeemed: ',redeemed)
 
@@ -51,11 +53,6 @@ class App extends Component {
           body: JSON.stringify({ 'amount': 1000 })
         })
         .then(response => response.json())
-        //.then(dat => this.setState({ points : this.state.user.points }) )
-        // .then(data => { 
-        //   var user = {...this.state.user}
-        //     user.points = data['New Points'];
-        //   this.setState({ points: data['New Points'] })})
         .then(datos => {
           let user = {...this.state.user};    
             user.points = datos['New Points'];                       
@@ -77,7 +74,7 @@ class App extends Component {
           <Header 
             user={this.state.user} 
             list={this.state.list}
-            getMorePoints={this.getMorePoints} />
+            getMorePoints={this.getMorePoints.bind(this)} />
         </header>
         <section>
           <Catalog 
