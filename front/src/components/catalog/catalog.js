@@ -10,19 +10,15 @@ class Catalog extends Component {
 
     constructor (props) {
         super(props);
-        this.page = 1;
+        this.state = { page: 1 }
     }
 
     setPageOne = (page) => {
-        this.page = 1;
-        // this.props.list = this.props.list.slice(0,16);
-        // console.log(page)
+        this.setState({page: 1})
     }
 
     setPageTwo = (page) => {
-        this.page = 2;
-        // this.props.list = this.props.list.slice(17,33);
-        // console.log(page)
+        this.setState({page: 2})
     }
 
     sortLowest = () => {
@@ -57,25 +53,18 @@ class Catalog extends Component {
         .catch(error => { console.log('request failed', error) })
     }
 
-    render() {      
-        
-        // let itemsPerPage;        
-        // // let itemsPerPage = page != 2 ?  this.props.list.slice(0,16) : this.props.list.slice(17,33)
-        // // console.log(itemsPerPage)
-        // // if(page != 2) { itemsPerPage = this.props.list.slice(0,16); 
-        
-        // itemsPerPage = this.props.list.slice(0,16); 
-        // let page2 = this.props.list.slice(17,33)
-        //page.push(itemsPerPage);
-        // 
+    render() {  
         let item;
-        if(this.page != 2 ) {
-            item = this.props.list.slice(0,16)
- 
-        }else {
-            item = this.props.slice(16)
+
+        if( this.state.page == 1 ) {
+            item = this.props.list.slice(0,16) 
+            console.log(item)
+        } else {
+            item = this.props.list.slice(16)
+            console.log(item)
         }
-        item.map((product,index) => 
+
+        item = item.map((product,index) => 
             <div key={index} className="product" ref={index}>
                 <div className="product-pics-div">
                     <figure className="product-pic">
@@ -103,8 +92,8 @@ class Catalog extends Component {
                 
                 <section>
                     <div>
-                        <button onClick={e => this.setPageOne(this.page)}>Prev</button>
-                        <button onClick={e => this.setPageTwo(this.page)}>Next</button>
+                        <button onClick={e => this.setPageOne(this.state.page)}>Prev</button>
+                        <button onClick={e => this.setPageTwo(this.state.page)}>Next</button>
                     </div>
                     <div>
                         <button onClick={e => this.sortNewest(e)}>Latest</button>
