@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/header/header';
 import Catalog from './components/catalog/catalog';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+//import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
 
 
@@ -42,7 +42,7 @@ class App extends Component {
       let redeemHistory = {...this.state.user.redeemHistory};    
       redeemHistory = prod;        
       console.log(this.state.user.redeemHistory)               
-      this.setState({redeemHistory})
+      this.setState({redeemHistory});
     }
 
     getMorePoints() {     

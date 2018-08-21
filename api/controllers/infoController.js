@@ -16,10 +16,6 @@ self.getInfo = function(req,res,next) {
                 userInfo.data,
                 productsInfo.data
             ]
-            // totalInfo = {
-            //     userInfo: userInfo.data,
-            //     productsInfo: productsInfo.data
-            // }
         )     
     })
     .catch(err => console.log('THIS IS ERROR: ', err))

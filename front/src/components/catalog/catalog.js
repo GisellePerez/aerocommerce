@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './../../App.css';
 import './catalog.css';
 import coin from '../../imgs/icons/coin.svg';
-import buyBlue from '../../imgs/icons/buy-blue.svg';
-import buyWhite from '../../imgs/icons/buy-white.svg';
-import { BrowserRouter as Router } from 'react-router-dom';
+//import { BrowserRouter as Router } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft, faChevronCircleRight,faShoppingBag } from '@fortawesome/free-solid-svg-icons';
@@ -49,7 +47,7 @@ class Catalog extends Component {
         body: JSON.stringify({'productId': id})
         })
         .then((res) => res.json())
-        .then((r) => { console.log(r)
+        .then((r) => { console.log(r);
         })
         .catch(err => { console.log('error', err) })
     }

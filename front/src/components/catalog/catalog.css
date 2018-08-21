@@ -237,6 +237,7 @@
 }
 
 @media(max-width: 950px) {
+    
     .products-container{
         padding: 1em;
     }
