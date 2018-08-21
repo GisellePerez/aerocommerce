@@ -44,13 +44,9 @@ class Catalog extends Component {
         body: JSON.stringify({'productId': id})
         })
         .then((res) => res.json())
-        .then((r) => { /*alert('Product successfully purchased')*/
-            console.log(r)
-            console.log(this.props.user.redeemHistory)
-
-            this.props.handleRedeemFromParent(this.user.redeemHistory);
+        .then((r) => { console.log(r)
         })
-        .catch(error => { console.log('request failed', error) })
+        .catch(err => { console.log('error', err) })
     }
 
     render() {  

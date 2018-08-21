@@ -14,19 +14,22 @@ class App extends Component {
       }
     }
 
-    handleSortLowest = (products) => {
+    handleSortLowest = () => {
+      let products = [ ...this.state.list ]
       let sorted = products.sort((a,b) => a.cost - b.cost);
       this.setState({ list:sorted })
       console.log(sorted);
     }
 
-    handleSortHighest = (products) => {
+    handleSortHighest = () => {
+      let products = [ ...this.state.list ]
       let sorted = products.sort((a,b) => b.cost - a.cost);
       console.log(sorted);
       this.setState({ list:sorted })
     }
 
-    handleSortNewest = (products) => {
+    handleSortNewest = () => {
+      let products = [ ...this.state.list ]
       let sorted = products.sort((a,b) => b.id - a.id);
       this.setState({ list:sorted })
       console.log(sorted);
