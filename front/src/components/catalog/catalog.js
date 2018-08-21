@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import './../../App.css';
 import './catalog.css';
 import coin from '../../imgs/icons/coin.svg';
+import buyBlue from '../../imgs/icons/buy-blue.svg';
+import buyWhite from '../../imgs/icons/buy-white.svg';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleLeft, faChevronCircleRight,faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+library.add(faChevronCircleLeft, faChevronCircleRight,faShoppingBag);
 
 
 class Catalog extends Component {
@@ -66,6 +71,9 @@ class Catalog extends Component {
                     <figure className="product-pic">
                         <img src={product.img.url} alt={product.name}/>
                     </figure>
+                    <div className="shopping-bag">
+                        <FontAwesomeIcon className ='font-awesome' icon={faShoppingBag}/>
+                    </div>
                 </div>
                 <div className="product-info">
                     <p className="product-category">{product.category}</p>
@@ -73,33 +81,60 @@ class Catalog extends Component {
                 </div>
                 {this.props.user.points > product.cost ?
                     <div className="affordable">
-                        <p>{product.cost}</p>
-                        <button onClick={() => this.handleSubmit(product._id)}>Redeem Now</button>
+                        <div className="center">
+                            <div className="align-affo">
+                                <p className="affordable-cost">{product.cost}</p>   
+                                <img className="coin" src={coin} alt="Coin icon"/> 
+                            </div>  
+                            
+                            <button onClick={() => { this.handleSubmit(product._id) } }>Redeem Now</button>
+                        </div>
                     </div>
                 :
                     <div className="not-affordable">
-                        <p>{ `You need  ${ product.cost - this.props.user.points }` } <span><img src={coin} alt='Coin icon'/></span></p>
+                        <div className="center">  
+                            <div className="align-not-affo">
+                                <p>{ `You need  ${ product.cost - this.props.user.points }` } </p>
+                                <img src={coin} alt='Coin icon'/>
+                            </div>
+                        </div>
                     </div>
                 }
             </div>
         )
         return (
             <div className="Catalog">
-                
-                <section>
-                    <div>
-                        <button onClick={e => this.setPageOne(this.state.page)}>Prev</button>
-                        <button onClick={e => this.setPageTwo(this.state.page)}>Next</button>
+                <section className="filters-section">
+                    <div className="filters-first-child">
+                        <div className="amount-products">
+                            {this.state.page == 1 ? <p>16 of 32 products</p> : <p>32 of 32 products</p> }
+                        </div>
+                        
+                        <div className="filter-buttons-div">
+                            <p>Sort by: </p>
+                            <button onClick={e => this.sortNewest(e)}>Most Recent</button>
+                            <button onClick={e => this.sortLowest(e)}>Lowest Price</button>
+                            <button onClick={e => this.sortHighest(e)}>Highest Price</button>
+                        </div>
                     </div>
-                    <div>
-                        <button onClick={e => this.sortNewest(e)}>Latest</button>
-                        <button onClick={e => this.sortLowest(e)}>Lowest Price</button>
-                        <button onClick={e => this.sortHighest(e)}>Highest Price</button>
+
+                    <div className="arrows-section">
+                        {this.state.page == 1 ?
+                            <button id="btn-next" onClick={e => this.setPageTwo(this.state.page)}><FontAwesomeIcon className ='font-awesome' icon={faChevronCircleRight}/></button>
+                            :
+                            <button id="btn-prev" onClick={e => this.setPageOne(this.state.page)}><FontAwesomeIcon className ='font-awesome' icon={faChevronCircleLeft}/></button>
+                        }
                     </div>
+
                 </section> 
                 <section className="products-container">
                     {item}
                 </section> 
+                <div className="final-parent">
+                    <div  className="amount-products">
+                        {this.state.page == 1 ? <p>16 of 32 products</p> : <p>32 of 32 products</p> }
+                    </div>                
+                </div>        
             </div>
         )
     }

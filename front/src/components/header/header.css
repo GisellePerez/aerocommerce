@@ -21,15 +21,130 @@
     padding: 0 15px;
 }
 .user-points p {
-    padding: 0 8px 0 15px;
+    padding: 0 0.2em 0 0.8em;
 }
+.user.points img {
+    padding-right: 0.4em;
+}
+
 .user-points {
     display: flex;
     background:#ededed;
     border-radius:100px;
     padding-right:8px;
 }
-
+#btn-points {
+    margin-left: 1em;
+    display: flex;
+    background:#ff6600;
+    border-radius:100px;
+    padding: 0.3em 1em;
+    color: #ffffff;
+    font-size: 1em;
+    border:none;
+    transition: .5s;
+}
+#btn-points:hover{
+    background-color: #0ad4fa ;
+}
 .Header .main-img img {
     width: 100%;
+}
+.header-pic-container {
+    position: relative;
+}
+h1 {
+    position: absolute;
+    bottom: 1em;
+    left: 2em;
+    font-size:4.5em;
+    color: white;
+}
+#logo{
+    margin-top:0.1em;
+    width: 3em;
+    height: auto;
+}
+.main-user {
+    display: flex;
+}
+
+
+@media(max-width: 850px) {
+    .Header {
+      font-size: 18px;
+    }
+    .user-points {
+      padding: 0.2em;
+    }
+    .user-name p, .user-points p {
+      font-size: 18px;
+      line-height: auto;
+    }
+    .user-points img {
+      width: 24px;
+      height: auto;
+      margin-top: 0.2em;
+    }
+    .btn-points {
+      padding:0.2em;
+    }
+    #logo {
+      width: 2.5em;
+      height: auto;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+  }
+
+@media (max-width: 800px) {
+    .App {
+      width: 100%;
+    }
+    .filters-section {
+      font-size: 12px;
+      line-height: auto;
+    }
+    h1 {
+      font-size: 2em;
+    }
+}
+
+@media (max-width:550px) {
+    .user-points {
+    padding: 0.1em;
+    }
+    .user-name p, .user-points p {
+    font-size: 14px;
+    line-height: 16px;
+    vertical-align: middle;
+    margin-top: 0.9em;
+    }
+    .user-points img {
+    width: 24px;
+    height: auto;
+    margin-top: 0.2em;
+    }
+    .btn-points {
+    padding:10px;
+    }
+    #logo {
+    width: 2em;
+    height: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .user-info {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .main-user {
+        margin-bottom: 0.5em;
+    }
+    #logo {
+        margin-top: 0.5em;
+    }
 }

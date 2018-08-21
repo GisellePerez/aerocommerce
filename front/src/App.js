@@ -4,6 +4,9 @@ import Header from './components/header/header';
 import Catalog from './components/catalog/catalog';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 
+
+
+
 class App extends Component {
 
     constructor(props) {
@@ -84,7 +87,7 @@ class App extends Component {
             sortHighestfromParent={this.handleSortHighest} 
             sortNewestfromParent={this.handleSortNewest}
             handleRedeemFromParent={this.handleRedeemProduct.bind(this)}
-           />
+          />
         </section> 
       </div>
     );

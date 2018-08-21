@@ -1,26 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
 * {
   margin:0;
   padding:0;
   box-sizing: border-box;
-}
-.App {
-  text-align: center;
-  width: 100%;
-  background-color:#f9f9f9;
+  font-family: 'Dosis', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-.App-title {
-  font-size: 1.5em;
-}
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@media(max-width: 850px) {
+  .Header {
+    font-size: 18px;
+  }
+  .user-points {
+    padding: 0.2em;
+  }
+  .user-name p, .user-points p {
+    font-size: 18px;
+    line-height: auto;
+  }
+  .user-points img {
+    width: 24px;
+    height: auto;
+    margin-bottom: 0.1em;
+  }
+  .btn-points {
+    padding:0.6em;
+  }
+  #logo {
+    width: 1em;
+    height: auto;
+  }
+  .filters-section,.products-container {
+    padding: 0 2em 0 2em
+  }
+  .products-container {
+    justify-content: space-between;
+  }
 }

@@ -16,22 +16,27 @@ class Header extends Component {
              <div className="Header">
                 <div className="user-bar">
                     <div className="user-info">
-                        <button onClick={this.props.getMorePoints}>Add points</button>
-                        <div className="user-name">
-                            <p>{this.props.user.name}</p>
+                        <div className="main-user">
+                            <div className="user-name">
+                                <p>{this.props.user.name}</p>
+                            </div>
+                            <div className="user-points">
+                                <p>{this.props.user.points}</p>
+                                <img className="coin" src={coin} alt="coin"/>
+                            </div>
                         </div>
-                        <div className="user-points">
-                            <p>{this.props.user.points}</p>
-                            <img src={coin} alt="coin"/>
-                        </div>
+                        <button id="btn-points"onClick={this.props.getMorePoints}>I want more points!</button>
                     </div>
                     <figure>
-                        <img src={logo} alt="Aerolab logo"/>
+                        <img id="logo" src={logo} alt="Aerolab logo"/>
                     </figure>
                 </div>
-                <figure className="main-img">
-                    <img src={headerx1} alt="Headphones"></img>
-                </figure>
+                <div className="header-pic-container">
+                    <figure className="main-img">
+                        <img src={headerx1} alt="Headphones"></img>
+                    </figure>
+                    <h1>Electronics</h1>
+                </div>
             </div>
         )
     }
